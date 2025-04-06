@@ -1,0 +1,20 @@
+<main>
+    <div class="mainDiv">
+        <div *ngFor="let product of foodArray" class="product-card">
+            <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div>
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">{{ product.price | currency }}</p>
+            <p class="product-spiciness">Spiciness: {{ product.spiciness }}</p>
+            <button>See more</button>
+        </div>
+    </div>
+</main>
+
+<!-- // "id": 1,
+//  "name": "Laab kai chicken salad",
+//  "price": 10,
+//  "nuts": true,
+//  "image": "https://course-jsbasic.javascript.ru/assets/products/laab_kai_chicken_salad.png",
+//  "vegeterian": false,
+//  "spiciness": 2,
+//  "categoryId": 1 -->

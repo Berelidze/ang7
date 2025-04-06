@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    list-style-type: none;
+    text-decoration: none;
+}
+button{
+    width: 123px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: white;
+    transition-duration: 0.985s;
+    cursor: pointer;
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+}
