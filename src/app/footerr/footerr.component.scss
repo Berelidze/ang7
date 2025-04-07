@@ -1,0 +1,61 @@
+$color: black;
+footer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 4px;
+    background-color: $color;
+    color: white;
+    margin-top: 20px;
+    .contact{
+        display: flex;
+        justify-content: space-around;
+        background-color: $color;
+        align-items: center;
+        .cont{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px;
+        }
+        .soc{
+            display: flex;
+            gap: 12px;
+            i{
+                font-size: 24px;
+                cursor: pointer;
+                color: white;
+            }
+            .fac{
+                &:hover{
+                    color: blue;
+                }
+            }
+            .ins{
+                &:hover{
+                    color: rgb(220, 38, 38);
+                }
+            }
+            .twi{
+                &:hover{
+                    color: lightseagreen;
+                }
+            }
+        }
+
+    }
+    p{
+        width: 100%;
+        text-align: center;
+        background-color: $color;
+    }
+}
+@media (max-width: 768px) {
+    footer{
+        .contact{
+            flex-direction: column;
+        }        
+    }
+}
+
+
