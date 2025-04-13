@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-detail',

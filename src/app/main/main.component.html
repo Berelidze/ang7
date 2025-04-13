@@ -5,7 +5,7 @@
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">{{ product.price | currency }}</p>
             <p class="product-spiciness">Spiciness: {{ product.spiciness }}</p>
-            <button>See more</button>
+            <button routerLink="/detail/{{product.id}}">See more</button>
         </div>
     </div>
 </main>

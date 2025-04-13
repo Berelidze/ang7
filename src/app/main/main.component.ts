@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { Food } from '../module/food';
+import { Food } from '../models/food';
 import { ServiceService } from '../service/service.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -21,5 +21,6 @@ export class MainComponent  implements OnInit {
   getFood(arr : Food[]){
     this.foodArray = arr;
   }
-  foodArray : Food[] = []
+  foodArray: Food[] = [];
+  j: Food[] = [];
 }
