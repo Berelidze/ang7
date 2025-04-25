@@ -16,3 +16,4 @@ export class Food{
 //  "vegeterian": false,
 //  "spiciness": 2,
 //  "categoryId": 1
+

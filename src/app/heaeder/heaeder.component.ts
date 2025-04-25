@@ -7,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './heaeder.component.scss'
 })
 export class HeaederComponent {
-
+  basketOpen(){
+    const baket = document.querySelectorAll('.left');
+    baket.forEach((element) => {
+      (element as HTMLElement).style.display = 'flex';
+    });
+  }
+  basketClose(){
+    const baket = document.querySelectorAll('.left');
+    baket.forEach((element) => {
+      (element as HTMLElement).style.display = 'none';
+    });
+  }
 }

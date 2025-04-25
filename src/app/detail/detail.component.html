@@ -1,1 +1,22 @@
-<p>detail works!</p>
+<div *ngIf="product">
+    <img [src]="product.image" alt="{{ product.name }}" />
+    <h2>{{ product.name }}</h2>
+    <p>Price: {{ product.price }}</p>
+    <p>Nuts: {{ product.nuts }}</p>
+    <p>Vegeterian: {{ product.vegeterian }}</p>
+    <p>Spiciness: {{ product.spiciness }}</p>
+  </div>
+  
+  <button routerLink="/main">Go back</button>
+
+
+
+
+<!-- // "id": 1,
+//  "name": "Laab kai chicken salad",
+//  "price": 10,
+//  "nuts": true,
+//  "image": "https://course-jsbasic.javascript.ru/assets/products/laab_kai_chicken_salad.png",
+//  "vegeterian": false,
+//  "spiciness": 2,
+//  "categoryId": 1 -->

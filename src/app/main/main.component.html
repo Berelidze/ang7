@@ -1,10 +1,37 @@
+<div class="top">
+    <div class="se">
+        <div class="inp">
+            <input [(ngModel)]="inputValue" type="number" placeholder="Enter spiciness level">
+            <button (click)="getSpiceFilter()">Search</button>
+            <button (click)="resetButton()">Reset</button>
+        </div>
+
+        <select name="" id="veg" class="select won wos" (click)="getVegSelect()">
+            <option value="0">--</option>
+            <option value="veg">Vegeterian</option>
+            <option value="nveg">Non-vegeterian</option>
+        </select>
+        <select name="" id="nut" class="select wov wos"  (click)="getNutSelect()">
+            <option value="0">--</option>
+            <option value="nut">Whith nuts</option>
+            <option value="nnut">Whithout nuts</option>
+        </select>
+        <select (change)="filterByCategory($event)"  class="select wov won">
+            <option value="0">--</option>
+            <option *ngFor="let type of TypeArray" [value]="type.id">{{ type.name }}</option>
+          </select>
+          
+          
+          
+    </div>
+</div>
+
 <main>
     <div class="mainDiv">
         <div *ngFor="let product of foodArray" class="product-card">
             <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div>
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">{{ product.price | currency }}</p>
-            <p class="product-spiciness">Spiciness: {{ product.spiciness }}</p>
             <button routerLink="/detail/{{product.id}}">See more</button>
         </div>
     </div>
@@ -18,3 +45,13 @@
 //  "vegeterian": false,
 //  "spiciness": 2,
 //  "categoryId": 1 -->
+
+<section id="section">
+    <div class="sec">
+        <h2>s o m t h i n g &nbsp; e r r o r</h2>
+        <div class="p">
+            <p>The minimum spiciness level is 0 and the maximum is 4</p>
+            <p>Please enter a value in this range</p>
+        </div>
+    </div>
+</section>
