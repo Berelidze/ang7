@@ -21,6 +21,4 @@ export class MainComponent  implements OnInit {
   getFood(arr : Food[]){
     this.foodArray = arr;
   }
-  foodArray: Food[] = [];
-  j: Food[] = [];
 }
