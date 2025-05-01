@@ -1,6 +1,18 @@
 <div class="header">
-    <i class="fa-solid fa-basket-shopping" (click)="basketOpen()"></i>
+    <div class="son">
+        <i class="fa-solid fa-basket-shopping" (click)="basketOpen()"></i>
+        <p>{{number}}</p>
+    </div>
 </div>
 <div class="left">
-    <i class="fa-solid fa-x" (click)="basketClose()"></i>
+    <i class="fa-solid fa-circle-xmark" (click)="basketClose()"></i>
+    <div class="mainDiv">
+        <div *ngFor="let product of foodArray" class="product-card">
+            <i class="fa-solid fa-star star"></i>
+            <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div>
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">{{ product.price | currency }}</p>
+            <button>Buy</button>
+        </div>
+    </div>
 </div>

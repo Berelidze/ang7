@@ -1,13 +1,18 @@
-<div *ngIf="product">
+<main>
+  <div *ngIf="product">
     <img [src]="product.image" alt="{{ product.name }}" />
     <h2>{{ product.name }}</h2>
-    <p>Price: {{ product.price }}</p>
-    <p>Nuts: {{ product.nuts }}</p>
-    <p>Vegeterian: {{ product.vegeterian }}</p>
+    <p>Price: {{ product.price }}$</p>
+    <p [ngStyle]="{color: product.nuts ? 'green' : 'red'}">{{nuts()}}</p>
+    <p [ngStyle]="{ color: product.vegeterian ? 'green' : 'red' }">
+      {{vegs()}}
+    </p>    
     <p>Spiciness: {{ product.spiciness }}</p>
+    <button routerLink="/main">Go back</button>
   </div>
+</main>
   
-  <button routerLink="/main">Go back</button>
+  
 
 
 

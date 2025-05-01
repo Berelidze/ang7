@@ -33,6 +33,24 @@ export class DetailComponent implements OnInit {
       this.product = data;
     });
   }
+  nut = 'Whith nuts';
+  veg = 'Vegeterian';
+  nuts(){
+    if(this.product?.nuts == true){
+      return this.nut = 'Whith nuts'
+    }
+    else{
+      return this.nut = 'Without nuts'
+    }
+  }
+  vegs(){
+    if(this.product?.vegeterian == true){
+      return this.veg = 'Vegeterian'
+    }
+    else{
+      return this.veg = 'Not vegeterian'
+    }
+  }
 }
 
 
