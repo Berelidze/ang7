@@ -29,7 +29,7 @@
 <main>
     <div class="mainDiv">
         <div *ngFor="let product of foodArray" class="product-card">
-          <i class="fa-solid fa-star star"></i>
+          <i class="fa-solid fa-star star" (click)="onStarClick(basket)"></i>
           <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div>
           <h2 class="product-name">{{ product.name }}</h2>
           <p class="product-price">{{ product.price | currency }}</p>

@@ -34,28 +34,28 @@ export class MainComponent implements OnInit {
       this.getTypeOfFood();
     });
 
-    this.loadBasket();
+    
   }
 
-  loadBasket() {
-    this.basketService.getBasket().subscribe((data) => {
-      this.basket = data;
-    });
-  }
+  
 
   onStarClick(product: any) {
     const exists = this.basket.find(p => p.id === product.id);
-
+    const star = document.getElementById(`star-${product.id}`);
+  
     if (exists) {
       this.basketService.deleteFromBasket(product).subscribe(() => {
         this.basket = this.basket.filter(p => p.id !== product.id);
+        if (star) star.style.color = 'black';
       });
     } else {
       this.basketService.addToBasket(product).subscribe(() => {
         this.basket.push(product);
+        if (star) star.style.color = 'yellow';
       });
     }
   }
+  
 
   getSpiceFilter() {
     this.foodArray = this.allFood.filter(
