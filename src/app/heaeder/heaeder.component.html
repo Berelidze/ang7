@@ -4,15 +4,24 @@
         <p>{{number}}</p>
     </div>
 </div>
-<div class="left">
-    <i class="fa-solid fa-circle-xmark" (click)="basketClose()"></i>
+<div class="left" *ngIf="basketShow">
+   
+  <i class="fa-solid fa-circle-xmark" (click)="basketClose()"></i>
     <div class="mainDiv">
-        <div *ngFor="let product of foodArray" class="product-card">
-            <i class="fa-solid fa-star star"></i>
-            <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div>
-            <h2 class="product-name">{{ product.name }}</h2>
-            <p class="product-price">{{ product.price | currency }}</p>
-            <button>Buy</button>
+        <div *ngFor="let product of basket" class="product-card">
+            <!-- <i class="fa-solid fa-star star"></i> -->
+            <!-- <div class="img" [style.backgroundImage]="'url(' + product.image + ')'"></div> -->
+            <h2 class="product-name">{{ product.product.name }}</h2>
+            <h2 class="product-name">Quantity : {{ product.quantity }}</h2>
+            <p class="product-price">{{ product.price *  product.quantity | currency }}</p>
+           
+            <div class="eddit">
+                <button class="plus" (click)="updateBusketUp(product.product.id, product.product.price, product.quantity)">+</button>
+                <button class="minus"  (click)="updateBusketDown(product.product.id, product.product.price, product.quantity)">-</button>
+            </div>
+            <button class="delete" (click)="deleteProduct(product.product.id)">DELETE</button>
+         
         </div>
     </div>
+   
 </div>

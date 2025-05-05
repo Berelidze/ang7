@@ -5,7 +5,8 @@ import { ServiceService } from '../service/service.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { foodType } from '../models/foodType';
-import { BasketService, Basket } from '../service/basket.service';
+import { BasketService, Basket, postBasket } from '../service/basket.service';
+import { SignalService } from '../service/signal.service';
 
 @Component({
   selector: 'app-main',
@@ -24,7 +25,8 @@ export class MainComponent implements OnInit {
 
   constructor(
     private httpFood: ServiceService,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private signal : SignalService
   ) {}
 
   ngOnInit() {
@@ -32,30 +34,41 @@ export class MainComponent implements OnInit {
       this.foodArray = resp;
       this.allFood = resp;
       this.getTypeOfFood();
+      this.basketService.getBasket().subscribe((data) => {
+        this.basketItems = data;
+        console.log(this.basketItems)
+        this.signal.setBascketCount(this.basketItems.length)
+      })
+      
     });
 
     
   }
+  basketItems: postBasket[] = [];
+  clickedStars: Set<number> = new Set();
 
-  
+  onStarClick(id: number, price: number): void {
+    if (this.isInBasket(id)) return;
 
-  onStarClick(product: any) {
-    const exists = this.basket.find(p => p.id === product.id);
-    const star = document.getElementById(`star-${product.id}`);
-  
-    if (exists) {
-      this.basketService.deleteFromBasket(product).subscribe(() => {
-        this.basket = this.basket.filter(p => p.id !== product.id);
-        if (star) star.style.color = 'black';
-      });
-    } else {
-      this.basketService.addToBasket(product).subscribe(() => {
-        this.basket.push(product);
-        if (star) star.style.color = 'yellow';
-      });
-    }
+    const product: postBasket = {
+      productId: id,
+      price: price,
+      quantity: 1
+    };
+
+    this.basketService.addToBasket(product).subscribe({
+      next: () => {
+        this.basketItems.push(product);
+        this.signal.updateBasketCountUp()
+      },
+      error: (err) => console.error('Error adding to basket:', err)
+    });
   }
-  
+
+  isInBasket(id: number): boolean {
+    return this.basketItems.some(item => item.productId === id);
+  }
+
 
   getSpiceFilter() {
     this.foodArray = this.allFood.filter(
